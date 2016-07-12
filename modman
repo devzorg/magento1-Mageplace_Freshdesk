@@ -8,5 +8,3 @@ app/locale/en_US/Mageplace_Freshdesk.csv                    app/locale/en_US/Mag
 
 skin/adminhtml/default/default/freshdesk/                   skin/adminhtml/default/default/freshdesk/
 skin/frontend/base/default/freshdesk/                       skin/frontend/base/default/freshdesk/
-
-var/package/freshdesk-1.0.0.xml                             var/package/freshdesk-1.0.0.xml
