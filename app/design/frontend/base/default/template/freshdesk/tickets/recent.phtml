@@ -13,23 +13,20 @@
  * @var Mageplace_Freshdesk_Block_Customer_Ticket_Recent $this
  */
 ?>
-<div class="box-account box-fd-recent-tickets">
+<div class="box-account box-fd-recent-tickets panel panel-default">
     <?php $_tickets = $this->getTickets(); ?>
-    <div class="box-head">
-        <h2><?php echo $this->__('Recent Tickets') ?></h2>
+    <div class="panel-heading">
+        <h2 class="pull-left"><?php echo $this->__('Recent Tickets') ?></h2>
         <?php if ($this->canAction()): ?>
-            <div class="actions">
-                <span class="separator">|</span>
-                <a href="<?php echo $this->getCreateUrl(); ?>"><?php echo $this->__('Create a Ticket') ?></a>
+            <div class="actions pull-right">
+                <a href="<?php echo $this->getCreateUrl(); ?>" class="btn btn-primary"><?php echo $this->__('Create a Ticket') ?></a>
             </div>
 
-            <?php if (sizeof($_tickets->getItems()) > 0): ?>
-                <a href="<?php echo $this->getViewAllUrl(); ?>"><?php echo $this->__('View All') ?></a>
-            <?php endif; ?>
         <?php endif; ?>
     </div>
     <?php if (sizeof($_tickets->getItems()) > 0): ?>
-        <table class="data-table" id="my-tickets-table">
+    <div class="table-responsive">
+        <table class="data-table table table-striped" id="my-tickets-table">
             <?php if ($this->isSubjectColumnVisible()) : ?>
                 <col/>
             <?php endif; ?>
@@ -70,7 +67,7 @@
                     <th><?php echo $this->__('Priority') ?></th>
                 <?php endif; ?>
                 <?php if ($this->canAction()): ?>
-                    <th>&nbsp;</th>
+                    <th><?php echo $this->__('View') ?></th>
                 <?php endif; ?>
             </tr>
             </thead>
@@ -120,13 +117,14 @@
             <?php endforeach; ?>
             </tbody>
         </table>
-        <script type="text/javascript">
-            if (!Object.isUndefined(fdAccountTicketRecent)) {
-                fdAccountTicketRecent.add('.box-recent', '.box-fd-recent-tickets', '.my-account .welcome-msg').process();
-            }
-            decorateTable('my-tickets-table');
-        </script>
+    </div>
+    <script type="text/javascript">
+        if (!Object.isUndefined(fdAccountTicketRecent)) {
+            fdAccountTicketRecent.add('.box-recent', '.box-fd-recent-tickets', '.my-account .welcome-msg').process();
+        }
+        decorateTable('my-tickets-table');
+    </script>
     <?php else: ?>
-        <p><?php echo $this->__('There are no tickets to display.'); ?></p>
+    <p><?php echo $this->__('There are no tickets to display.'); ?></p>
     <?php endif; ?>
 </div>
