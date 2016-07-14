@@ -19,7 +19,6 @@
     <?php echo $this->getInputFieldHtml(); ?>
     <label for="<?php echo $this->getFieldId(); ?>"
            class="<?php if ($this->isRequired()): ?>required<?php endif; ?>">
-        <?php if ($this->isRequired()): ?> <em class="required">*</em><?php endif; ?>
         <?php echo $this->getFieldLabel(); ?>
     </label>
 </li>

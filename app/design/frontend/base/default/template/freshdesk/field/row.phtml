@@ -16,14 +16,13 @@
 
 ?>
 <li class="wide">
-    <div class="field">
+    <div class="field form-group">
         <label for="<?php echo $this->getFieldId(); ?>"
-               class="<?php if ($this->isRequired()): ?>required<?php endif; ?>">
-            <?php if ($this->isRequired()): ?> <em class="required">*</em><?php endif; ?>
+               class="control-label <?php if ($this->isRequired()): ?>required<?php endif; ?>">
             <?php echo $this->getFieldLabel(); ?>
         </label>
 
-        <div class="input-box">
+        <div class="input-box form-values">
             <?php echo $this->getInputFieldHtml(); ?>
         </div>
     </div>

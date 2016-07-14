@@ -21,12 +21,12 @@
 
         <div class="actions">
             <?php if ($this->isRefreshButtonVisible()): ?>
-                <button type="button" title="<?php echo $this->__('Refresh') ?>" class="button btn-refresh-ticket"
+                <button type="button" title="<?php echo $this->__('Refresh') ?>" class="btn btn-primary btn-refresh-ticket"
                         onclick="location.href='<?php echo $this->getRefreshUrl(); ?>'">
                     <span><span><?php echo $this->__('Refresh') ?></span></span>
                 </button>
             <?php endif; ?>
-            <button type="button" title="<?php echo $this->__('Create a Ticket') ?>" class="button btn-create-ticket"
+            <button type="button" title="<?php echo $this->__('Create a Ticket') ?>" class="btn btn-primary btn-create-ticket"
                     onclick="location.href='<?php echo $this->getCreateUrl(); ?>'">
                 <span><span><?php echo $this->__('Create a Ticket') ?></span></span>
             </button>
@@ -36,7 +36,8 @@
     <?php echo $this->getPagerHtml(); ?>
 
     <?php if (sizeof($_tickets->getItems()) > 0): ?>
-        <table class="data-table" id="my-tickets-table">
+    <div class="table-responsive">
+        <table class="data-table table table-condensed" id="my-tickets-table">
             <?php if ($this->isSubjectColumnVisible()) : ?>
                 <col/>
             <?php endif; ?>
@@ -74,7 +75,7 @@
                 <?php if ($this->isPriorityColumnVisible()) : ?>
                     <th><?php echo $this->__('Priority') ?></th>
                 <?php endif; ?>
-                <th>&nbsp;</th>
+                <th><?php echo $this->__('View'); ?></th>
             </tr>
             </thead>
             <tbody>
@@ -108,7 +109,7 @@
                     <?php endif; ?>
                     <td class="a-center">
                         <span class="nobr">
-                        <a href="<?php echo $this->getViewUrl($_ticket) ?>"><?php echo $this->__('View'); ?></a>
+                        <a href="<?php echo $this->getViewUrl($_ticket) ?>" class="btn btn-sm btn-primary"><?php echo $this->__('View'); ?></a>
                             <?php if ($this->canClose($_ticket)): ?>
                                 <span class="separator">|</span>
                                 <a href="<?php echo $this->getCloseUrl($_ticket) ?>"
@@ -121,13 +122,13 @@
             <?php endforeach; ?>
             </tbody>
         </table>
-
+    </div>
     <?php echo $this->getPagerHtml(); ?>
 
-        <script type="text/javascript">
-            decorateTable('my-tickets-table');
-        </script>
+    <script type="text/javascript">
+        decorateTable('my-tickets-table');
+    </script>
     <?php else: ?>
-        <p><?php echo $this->__('There are no tickets to display.'); ?></p>
+    <p><?php echo $this->__('There are no tickets to display.'); ?></p>
     <?php endif; ?>
 </div>
